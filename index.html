@@ -17,13 +17,36 @@
     box-sizing: border-box;
     border-spacing: 0px;
     border: 1px gray solid;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+#solveButton{
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+#solveButton:hover{
+    background-color: #008CBA;
+    color: white;
 }
     </style>
     
 </head>
-<body>
+<body><center><h1> 9x9 Sudoku Solver</h1>
     <div id="puzzle"></div>
+    <br>
     <button id="solveButton">Solve</button>
+    </center>
 
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

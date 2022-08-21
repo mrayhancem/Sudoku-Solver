@@ -2,15 +2,14 @@ var puzzleBoard = document.querySelector('#puzzle')
 const solveButton = document.querySelector('#solveButton')
 //console.log(puzzleBoard)
 const squares = 81
-const data = []
-
+var data = []
+var count = 1;
 for(let i = 0; i < squares ; i++){
     const buttonInput = document.createElement('input')
     buttonInput.setAttribute('type', 'number')
     buttonInput.setAttribute('min',1)
     buttonInput.setAttribute('max',9)
     puzzleBoard.appendChild(buttonInput)
-    
 }
 
 function collectData(){
@@ -26,7 +25,7 @@ function collectData(){
 }
 
 function solve(){
-
+    data = []
     collectData();
     console.log(data);
     const options = {
@@ -42,15 +41,33 @@ function solve(){
     };
     
     axios.request(options).then(function (response) {
-        console.log(response.data);
+        console.log(response.data.answer);
+        //fillData(response.data)
+        
+        const allInputs = document.querySelectorAll("input")
+        response.data.answer.forEach((item,i)=>{
+            allInputs[i].value = item
+
+        })
+        
     }).catch(function (error) {
-        console.error(error);
+       // console.error(error);
     });
 }
 
+function fillData(arr){
+    const allInputs = document.querySelectorAll("input")
+    for(let i=0; i<allInputs.length;i++){
+        allInputs[i].value = arr[i]
+    }
+}
 
+function test(data){
+    data.forEach(i =>{
+        document.write(i)
+    })
 
-
+}
 
 solveButton.addEventListener('click',solve);
 
